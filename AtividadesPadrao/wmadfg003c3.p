@@ -13,9 +13,9 @@ procedure p_setparams:
            vpad-btnaveg = true
            vpad-numlin  = 30
            vpad-numcol  = 10
-           vpad-frmload = false
+           vpad-frmload = true
            vpad-modo    = "MAN"
-           vpad-progman = "".
+           vpad-progman = "wmadfg003m3".
          /*vpad-percsup = 0
            vpad-percinf = 0*/
 end procedure.
@@ -35,7 +35,7 @@ procedure p_abrequery:
 end procedure.
 
 procedure p_browse:
-    finicio(vpad-cor,"").
+    finicio(vpad-cor,string(rowid(pais))).
     fcaixa("C",string(pais.pai-pais),"C","Código","",50,0).
     fcaixa("C",pais.pai-nome,"C","País","",50,0).
     final(no,100,"").
