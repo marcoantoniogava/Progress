@@ -1,0 +1,108 @@
+body {
+    overflow-y: auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.box_titulo {
+    border: 1px solid #82b5dc;
+    border-bottom: 0px;
+    background-color: var(--main-bg-color);
+    padding: 2px;
+    height: 22px;
+    position: relative;
+}
+
+.box_effect {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #82b5dc;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    height: 100%;
+    border: 1px solid #82b5dc;
+    border-radius: 4px;
+}
+
+.box_naveg {
+    background-color: var(--main-bg-color);
+    border: 1px solid #82b5dc;
+    border-top: 0px;
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    padding: 2px 3px 2px 3px;
+    max-height: 30px;
+}
+
+.box_dados {
+    background-color: var(--main-bg-color);
+    border: 1px solid #82b5dc;
+    border-bottom: 0px;
+    overflow: auto;
+    border-top: 0px;
+    height: 100%;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    unicode-bidi: isolate;
+    border-spacing: 2px;
+    border-color: gray;
+}
+
+#vordena {
+    border: 1px solid #82b5dc;
+    color: #0c4f78;
+    height: 20px;
+    border-radius: 2px;
+    background-color: white;
+    outline: none;
+    margin-right: 10px;
+}
+
+#vpadpesq {
+    border: 1px solid #82b5dc;
+    height: 20px;
+    border-radius: 2px;
+    background-color: white;
+    outline: none;
+    margin-right: 10px;
+    margin: 2px;
+}
+
+option {
+    font-weight: normal;
+    display: block;
+    padding-block-start: 0px;
+    padding-block-end: 1px;
+    min-block-size: 1.2em;
+    padding-inline: 2px;
+    white-space: nowrap;
+}
+
+.box_botoes {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #82b5dc;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 5px 0px 5px 0px;
+    max-height: 40px;
+    height: 30px;
+    min-height: 30px;
+}
+

@@ -1,0 +1,327 @@
+:root {
+    --bg: #0e0e0f;
+    --panel: #18181b;
+    --border: #2a2a30;
+    --accent: #e8c547;
+    --accent2: #7dd3fc;
+    --text: #f4f4f5;
+    --muted: #52525b;
+    --cell-bg: #1c1c21;
+    --given: #f4f4f5;
+    --user: #7dd3fc;
+    --error: #f87171;
+    --success: #4ade80;
+    --cell-size: 56px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    gap: 28px;
+    background-image:
+        radial-gradient(ellipse at 10% 20%, rgba(232, 197, 71, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 80%, rgba(125, 211, 252, 0.04) 0%, transparent 50%);
+}
+
+header {
+    text-align: center;
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+header p {
+    color: var(--muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+.difficulty-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.diff-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.diff-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.diff-btn.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(232, 197, 71, 0.08);
+}
+
+.game-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(9, var(--cell-size));
+    grid-template-rows: repeat(9, var(--cell-size));
+    border: 2px solid var(--accent);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(232, 197, 71, 0.08), 0 8px 32px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.cell {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    background: var(--cell-bg);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 1.25rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.1s;
+    position: relative;
+    user-select: none;
+    outline: none;
+    color: var(--given);
+    caret-color: var(--accent);
+}
+
+/* thick borders for 3x3 boxes */
+.cell[data-col="3"],
+.cell[data-col="6"] {
+    border-left: 2px solid rgba(232, 197, 71, 0.4);
+}
+
+.cell[data-row="3"],
+.cell[data-row="6"] {
+    border-top: 2px solid rgba(232, 197, 71, 0.4);
+}
+
+.cell.given {
+    color: var(--given);
+}
+
+.cell.user-input {
+    color: var(--user);
+}
+
+.cell.selected {
+    background: rgba(125, 211, 252, 0.12);
+}
+
+.cell.highlight {
+    background: rgba(125, 211, 252, 0.05);
+}
+
+.cell.same-num {
+    background: rgba(232, 197, 71, 0.1);
+}
+
+.cell.error {
+    color: var(--error) !important;
+}
+
+.cell:not(.given):hover {
+    background: rgba(125, 211, 252, 0.08);
+}
+
+.cell input {
+    display: none;
+}
+
+/* numpad */
+#numpad {
+    display: grid;
+    grid-template-columns: repeat(9, 44px);
+    gap: 6px;
+}
+
+.num-btn {
+    width: 44px;
+    height: 44px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+.num-btn:hover {
+    border-color: var(--accent2);
+    color: var(--accent2);
+    background: rgba(125, 211, 252, 0.08);
+}
+
+.num-btn.erase {
+    color: var(--muted);
+}
+
+.num-btn.erase:hover {
+    border-color: var(--error);
+    color: var(--error);
+    background: rgba(248, 113, 113, 0.08);
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 22px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid;
+    transition: all 0.15s;
+}
+
+.btn-primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    background: #f0d060;
+    box-shadow: 0 0 20px rgba(232, 197, 71, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--muted);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent2);
+    color: var(--accent2);
+}
+
+.btn-validate {
+    background: transparent;
+    border-color: var(--accent2);
+    color: var(--accent2);
+}
+
+.btn-validate:hover {
+    background: rgba(125, 211, 252, 0.1);
+    box-shadow: 0 0 20px rgba(125, 211, 252, 0.15);
+}
+
+/* feedback */
+#feedback {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    transition: all 0.3s;
+    opacity: 0;
+    border: 1px solid transparent;
+}
+
+#feedback.show {
+    opacity: 1;
+}
+
+#feedback.incomplete {
+    border-color: var(--muted);
+    color: var(--muted);
+    background: rgba(82, 82, 91, 0.15);
+}
+
+#feedback.wrong {
+    border-color: var(--error);
+    color: var(--error);
+    background: rgba(248, 113, 113, 0.1);
+}
+
+#feedback.correct {
+    border-color: var(--success);
+    color: var(--success);
+    background: rgba(74, 222, 128, 0.1);
+}
+
+/* timer */
+#timer {
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+}
+
+@media (max-width: 560px) {
+    :root {
+        --cell-size: 38px;
+    }
+
+    .cell {
+        font-size: 1rem;
+    }
+
+    #numpad {
+        grid-template-columns: repeat(9, 36px);
+        gap: 4px;
+    }
+
+    .num-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 0.85rem;
+    }
+}

@@ -1,0 +1,150 @@
+body {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+.box_titulo {
+    border: 1px solid #82b5dc;
+    border-bottom: 0px;
+    background-color: var(--main-bg-color);
+    padding: 2px;
+    height: 22px;
+    position: relative;
+}
+
+.box_effect {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #82b5dc;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    height: 100%;
+    border: 1px solid #82b5dc;
+    border-radius: 4px;
+}
+
+.box_naveg {
+    background-color: var(--main-bg-color);
+    border: 1px solid #82b5dc;
+    border-top: 0px;
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    padding: 2px 3px 2px 3px;
+    max-height: 30px;
+}
+
+.box_dados {
+    background-color: var(--main-bg-color);
+    border: 1px solid #82b5dc;
+    border-top: 0px;
+    border-bottom: 0px;
+    overflow-y: auto;
+    flex: 1;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: var(--main-bg-color);
+}
+
+thead th {
+    background-color: var(--main-bg-color);
+}
+
+.box_dados::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+}
+
+.box_dados::-webkit-scrollbar-track {
+    background: #eff4f9;
+    border: 1px solid #dce4f3;
+}
+
+.box_dados::-webkit-scrollbar-thumb {
+    background: white;
+    border: 2px solid #b4d5ee;
+}
+
+.box_dados::-webkit-scrollbar-corner {
+    background: white;
+    border: 1px solid #dce4f3;
+}
+
+table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    unicode-bidi: isolate;
+    border-spacing: 2px;
+    border-color: gray;
+}
+
+#vordena {
+    border: 1px solid #82b5dc;
+    color: #0c4f78;
+    height: 20px;
+    border-radius: 2px;
+    background-color: white;
+    outline: none;
+    margin-right: 10px;
+}
+
+#vpadpesq {
+    border: 1px solid #82b5dc;
+    height: 20px;
+    border-radius: 2px;
+    background-color: white;
+    outline: none;
+    margin-right: 10px;
+    margin: 2px;
+}
+
+#vselect-est-estado {
+    border: 1px solid #82b5dc;
+    color: #0c4f78;
+    height: 20px;
+    border-radius: 2px;
+    background-color: white;
+    outline: none;
+    margin-right: 10px;
+}
+
+option {
+    font-weight: normal;
+    display: block;
+    padding-block-start: 0px;
+    padding-block-end: 1px;
+    min-block-size: 1.2em;
+    padding-inline: 2px;
+    white-space: nowrap;
+}
+
+.box_botoes {
+    position: static;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #82b5dc;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 5px 0px;
+    height: 30px;
+    min-height: 30px;
+    flex-shrink: 0;
+}
